@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: chat
+  namespace: default
+spec:
+  serviceName: chat
+  replicas: 2
+  selector:
+    matchLabels:
+      app: chat
+  template:
+    metadata:
+      labels:
+        app: chat
+    spec:
+      containers:
+        - name: chat-server
+          image: {{.Values.images.repository}}:{{.Values.images.tag}}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              name: http
+            - containerPort: 9000
+              name: grpc
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: chat
+  namespace: default
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+      name: grpc
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      name: http
+  selector:
+    app: chat
+       

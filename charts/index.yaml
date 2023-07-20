@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  myapp:
+  - apiVersion: v2
+    created: "2023-07-20T17:08:01.4326748+08:00"
+    digest: 72e97b854e75e06f9ede84f3de481f2f2ffa8cbb6ed67741363be8b4832db433
+    name: myapp
+    urls:
+    - charts/myapp-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    created: "2023-07-20T17:08:01.4326748+08:00"
+    digest: 550bdfd1d16ff8e019261fb93fc642166aeec9055fb05d772adc7db979bebb6d
+    name: myapp
+    urls:
+    - metal/myapp-1.0.0.tgz
+    version: 1.0.0
+generated: "2023-07-20T17:08:01.4321546+08:00"
